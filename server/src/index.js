@@ -17,8 +17,8 @@ app.get("/", function(req, res) {
 app.get("/data-diri", function(req, res) {
     // diganti dan ambil dari databse
     return res.send({
-        nama: "test",
-        umur: 1,
+        nama: "Hanif",
+        umur: 20,
         dob: "12 Mei 1998"
     });
 })

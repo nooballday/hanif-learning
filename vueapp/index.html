@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue App</title>
+</head>
+
+<body>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <span id="nama">Nama : {{data.nama}}</span>
+        <span id="umur">Umur : {{data.umur}}</span>
+        <span id="dob">DOB : {{data.dob}}</span>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const data = ref({});
+
+                fetch("http://localhost:3002/data-diri").then(res => {
+                    res.json().then(jsonData => {
+                        data.value = jsonData
+                    });
+                }).catch(error => {
+                    console.error(error);
+                })
+                return {
+                    data
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
